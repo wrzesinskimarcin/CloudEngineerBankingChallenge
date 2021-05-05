@@ -1,4 +1,3 @@
-using System;
 using System.Text.Json.Serialization;
 
 namespace CloudEngineerBankingChallenge.Model
@@ -33,6 +32,6 @@ namespace CloudEngineerBankingChallenge.Model
         public string LoanAmount { get; set; } //expressed in danish krone
 
         [JsonPropertyName("Loan duration")]
-        public string LoadDuration { get; set; }  //expressed in months
+        public string LoanDuration { get; set; }  //expressed in months
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-namespace CloudEngineerBankingChallenge.Interfaces
+﻿namespace CloudEngineerBankingChallenge.Interfaces
 {
     public interface IConfigurationService
     {

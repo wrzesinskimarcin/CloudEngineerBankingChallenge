@@ -3,7 +3,6 @@ using System.Linq;
 using CloudEngineerBankingChallenge.Interfaces;
 using CloudEngineerBankingChallenge.Model;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace CloudEngineerBankingChallenge.Controllers
 {
@@ -11,17 +10,15 @@ namespace CloudEngineerBankingChallenge.Controllers
     [Route("[controller]")]
     public class PaymentOverviewController : ControllerBase
     {
-        private readonly ILogger<PaymentOverviewController> _logger;
-
         private readonly ILoanService _loanService;
 
-        public PaymentOverviewController(ILogger<PaymentOverviewController> logger, ILoanService loanService)
+        public PaymentOverviewController(ILoanService loanService)
         {
-            _logger = logger;
             _loanService = loanService;
         }
 
         [HttpGet]
+        [HttpGet("{loanAmount}")]
         [HttpGet("{loanAmount}/{loanDuration}")]
         public IEnumerable<PaymentOverviewResponse> Get(double loanAmount = 500000, double loanDuration = 10)
         {
@@ -41,7 +38,7 @@ namespace CloudEngineerBankingChallenge.Controllers
                 Request = new RequestParameters
                 {
                     LoanAmount = loanAmount.ToString("C", danish),
-                    LoadDuration = $"{loanDuration} {yearOrYears}"
+                    LoanDuration = $"{loanDuration} {yearOrYears}"
                 }
             });
         }
